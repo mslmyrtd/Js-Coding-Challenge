@@ -3,11 +3,14 @@ const display = document.getElementById("display");
 const submit = document.getElementById("submit");
 
 submit.addEventListener("click", () => {
-  var wovels = "aei";
-  var result = input.value.match(wovels);
-  var count = result.length;
-  console.log(count);
+  var newValue = input.value.replace(" ", "");
 
-  display.innerText = `There are  wovels in  ${input.value}`;
+  const count = (newValue) =>
+    [...newValue].filter((k) => "aeiou".includes(k.toLowerCase())).length;
+
+  display.innerHTML = `There are ${count(
+    input.value
+  )} wovels in  <span style="color:red">${input.value}</span>
+  `;
   input.value = "";
 });
